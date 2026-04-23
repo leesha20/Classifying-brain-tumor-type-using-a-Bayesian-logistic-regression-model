@@ -63,6 +63,10 @@ class_colors <- c(
   "Pituitary"  = "#2A9D8F"
 )
 
+# Enforce consistent class ordering across every figure
+CLASS_ORDER_PRETTY <- c("No Tumor", "Glioma", "Meningioma", "Pituitary")
+CLASS_ORDER_RAW    <- c("no_tumor", "glioma_tumor", "meningioma_tumor", "pituitary_tumor")
+
 # Shared ggplot theme — clean academic style
 academic_theme <- theme_minimal(base_size = 13) +
   theme(
@@ -89,6 +93,7 @@ dist_df <- as.data.frame(table(manifest$split, manifest$class))
 names(dist_df) <- c("Split", "Class", "Count")
 dist_df$Class <- class_pretty[as.character(dist_df$Class)]
 dist_df$Split <- ifelse(dist_df$Split == "train", "Training", "Test")
+dist_df$Class <- factor(dist_df$Class, levels = CLASS_ORDER_PRETTY)
 
 p1 <- ggplot(dist_df, aes(x = Class, y = Count, fill = Class)) +
   geom_col() +
@@ -109,7 +114,7 @@ save_plot(p1, "fig01_class_distribution.png", w = 9, h = 4.5)
 cat("Figure 2: Sample MRI images\n")
 set.seed(7)
 sample_per_class <- do.call(rbind, lapply(
-  unique(manifest$class),
+  CLASS_ORDER_RAW,
   function(cl) manifest[manifest$class == cl & manifest$split == "train", ][
     sample(sum(manifest$class == cl & manifest$split == "train"), 1), ]
 ))
