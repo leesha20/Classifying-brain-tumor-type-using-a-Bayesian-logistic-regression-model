@@ -1,0 +1,114 @@
+
+> cat("FREQUENTIST BASELINE — Multinomial Logistic Regression via MLE\n")
+FREQUENTIST BASELINE — Multinomial Logistic Regression via MLE
+
+> cat(rep("=", 70), sep = ""); cat("\n\n")
+======================================================================
+
+
+> cat("Training set:", nrow(train_X), "observations,", ncol(train_X), "features\n")
+Training set: 2870 observations, 11 features
+
+> cat("Test set:    ", nrow(test_X),  "observations\n\n")
+Test set:     394 observations
+
+
+> cat("Converged:", freq_fit$convergence == 0, "\n")
+Converged: TRUE 
+
+> cat("Deviance: ", round(freq_fit$deviance, 2), "\n")
+Deviance:  4269.3 
+
+> cat("AIC:      ", round(freq_fit$AIC, 2), "\n\n")
+AIC:       4341.3 
+
+
+> cat("Test accuracy: ", sprintf("%.2f%%", accuracy * 100), "\n")
+Test accuracy:  44.92% 
+
+> cat("Macro F1:      ", round(macro_f1, 3), "\n\n")
+Macro F1:       0.432 
+
+
+> cat("Confusion matrix:\n"); print(cm)
+Confusion matrix:
+                  Predicted
+Actual             no_tumor
+  no_tumor               52
+  glioma_tumor           27
+  meningioma_tumor       29
+  pituitary_tumor        11
+                  Predicted
+Actual             glioma_tumor
+  no_tumor                    5
+  glioma_tumor               15
+  meningioma_tumor            4
+  pituitary_tumor             3
+                  Predicted
+Actual             meningioma_tumor
+  no_tumor                       42
+  glioma_tumor                   37
+  meningioma_tumor               63
+  pituitary_tumor                13
+                  Predicted
+Actual             pituitary_tumor
+  no_tumor                       6
+  glioma_tumor                  21
+  meningioma_tumor              19
+  pituitary_tumor               47
+
+> cat("\nPer-class metrics:\n"); print(metrics)
+
+Per-class metrics:
+             class precision recall
+1         no_tumor     0.437  0.495
+2     glioma_tumor     0.556  0.150
+3 meningioma_tumor     0.406  0.548
+4  pituitary_tumor     0.505  0.635
+     f1 support
+1 0.464     105
+2 0.236     100
+3 0.467     115
+4 0.563      74
+
+> cat("\nCoefficient estimates:\n"); print(round(coef_mat, 3))
+
+Coefficient estimates:
+                 (Intercept) skewness
+glioma_tumor          -0.434    6.132
+meningioma_tumor       1.583    0.193
+pituitary_tumor        0.924    1.883
+                 kurtosis energy
+glioma_tumor       -4.273 -0.174
+meningioma_tumor   -1.070 -0.854
+pituitary_tumor    -3.483  0.305
+                 entropy contrast
+glioma_tumor      -0.607  -27.213
+meningioma_tumor   0.564   -5.342
+pituitary_tumor   -0.253   -8.316
+                 correlation
+glioma_tumor          -1.969
+meningioma_tumor       0.049
+pituitary_tumor       -1.584
+                 glcm_energy
+glioma_tumor          -1.597
+meningioma_tumor      -0.368
+pituitary_tumor        0.525
+                 homogeneity
+glioma_tumor          12.537
+meningioma_tumor       5.478
+pituitary_tumor        5.717
+                 dissimilarity
+glioma_tumor            31.409
+meningioma_tumor         7.411
+pituitary_tumor         10.076
+                 aspect_ratio
+glioma_tumor            0.100
+meningioma_tumor       -0.066
+pituitary_tumor        -0.310
+                 perimeter
+glioma_tumor        -0.735
+meningioma_tumor     0.206
+pituitary_tumor      1.679
+
+> sink()

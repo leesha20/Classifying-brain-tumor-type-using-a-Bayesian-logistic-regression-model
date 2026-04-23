@@ -1,0 +1,174 @@
+
+> cat("MCMC DIAGNOSTICS REPORT\n")
+MCMC DIAGNOSTICS REPORT
+
+> cat(rep("=", 70), sep = ""); cat("\n\n")
+======================================================================
+
+
+> cat("MCMC settings:\n")
+MCMC settings:
+
+> cat("  Iterations/chain:", model_A$mcmc_settings$n_iter, "\n")
+  Iterations/chain: 50000 
+
+> cat("  Burn-in:         ", model_A$mcmc_settings$n_burnin, "\n")
+  Burn-in:          10000 
+
+> cat("  Thinning:        ", model_A$mcmc_settings$n_thin, "\n")
+  Thinning:         10 
+
+> cat("  Chains:          ", model_A$mcmc_settings$n_chains, "\n")
+  Chains:           4 
+
+> cat("  Samples/chain after thinning:", N_A, "\n\n")
+  Samples/chain after thinning: 4000 
+
+
+> for (name_mdl in c("Model A (Normal(0, 10))", "Model B (Normal(0, 2))")) {
++   cat(rep("-", 70), sep = ""); cat("\n")
++   cat(name_mdl, "\n")
++   ca .... [TRUNCATED] 
+----------------------------------------------------------------------
+Model A (Normal(0, 10)) 
+----------------------------------------------------------------------
+
+Acceptance rates:  0.247, 0.235, 0.235, 0.236 
+Max R-hat:         1.0047 
+Min ESS:           1448 
+Median ESS:        1568 
+Params w/ R-hat > 1.1: 0 / 33 
+Params w/ ESS < 400:   0 / 33 
+
+Posterior summary (all parameters):
+                       parameter post_mean post_sd ci_lower ci_upper  r_hat r_hat_upper  ess
+      glioma_tumor : (Intercept)    0.4353  0.1330   0.1732   0.6957 1.0047      1.0141 1514
+         glioma_tumor : skewness    5.1837  0.3735   4.4765   5.9373 1.0010      1.0015 1633
+         glioma_tumor : kurtosis   -5.6424  0.3344  -6.3052  -5.0097 1.0014      1.0037 1539
+           glioma_tumor : energy   -0.4183  0.1225  -0.6636  -0.1816 1.0038      1.0103 1659
+          glioma_tumor : entropy   -0.1156  0.1823  -0.4724   0.2469 1.0015      1.0047 1563
+         glioma_tumor : contrast   -3.8150  0.2781  -4.3554  -3.2768 1.0017      1.0046 1569
+      glioma_tumor : correlation   -2.3121  0.1451  -2.6035  -2.0329 1.0004      1.0013 1571
+      glioma_tumor : glcm_energy    0.6553  0.2393   0.1892   1.1289 1.0014      1.0043 1665
+      glioma_tumor : homogeneity    0.2720  0.2309  -0.1866   0.7198 1.0002      1.0004 1599
+     glioma_tumor : aspect_ratio   -0.1046  0.0861  -0.2727   0.0665 1.0026      1.0081 1585
+        glioma_tumor : perimeter   -0.5948  0.1263  -0.8389  -0.3495 1.0015      1.0043 1675
+  meningioma_tumor : (Intercept)    1.2472  0.0997   1.0572   1.4477 1.0018      1.0060 1448
+     meningioma_tumor : skewness    0.6529  0.1546   0.3499   0.9559 1.0010      1.0033 1555
+     meningioma_tumor : kurtosis   -1.6545  0.2016  -2.0510  -1.2614 1.0007      1.0019 1532
+       meningioma_tumor : energy   -1.0117  0.1050  -1.2185  -0.8083 1.0019      1.0040 1665
+      meningioma_tumor : entropy    0.6480  0.1207   0.4121   0.8863 1.0017      1.0050 1513
+     meningioma_tumor : contrast   -0.6140  0.1209  -0.8583  -0.3842 1.0045      1.0139 1572
+  meningioma_tumor : correlation   -0.2148  0.1107  -0.4316  -0.0017 1.0009      1.0023 1552
+  meningioma_tumor : glcm_energy   -0.0294  0.1493  -0.3220   0.2601 1.0019      1.0060 1554
+  meningioma_tumor : homogeneity    1.9791  0.1781   1.6301   2.3288 1.0005      1.0010 1616
+ meningioma_tumor : aspect_ratio   -0.1517  0.0754  -0.2986  -0.0023 1.0013      1.0035 1568
+    meningioma_tumor : perimeter    0.2320  0.1040   0.0254   0.4369 1.0001      1.0003 1689
+   pituitary_tumor : (Intercept)    0.5543  0.1142   0.3312   0.7777 1.0013      1.0039 1476
+      pituitary_tumor : skewness    2.8111  0.2874   2.2598   3.3823 1.0018      1.0057 1544
+      pituitary_tumor : kurtosis   -4.6776  0.2878  -5.2412  -4.1185 1.0020      1.0063 1561
+        pituitary_tumor : energy    0.1628  0.1255  -0.0843   0.4124 1.0010      1.0020 1626
+       pituitary_tumor : entropy   -0.0881  0.1608  -0.3997   0.2362 1.0013      1.0035 1579
+      pituitary_tumor : contrast   -1.9270  0.2327  -2.3941  -1.4803 1.0024      1.0067 1558
+   pituitary_tumor : correlation   -1.9638  0.1389  -2.2382  -1.6924 1.0014      1.0045 1545
+   pituitary_tumor : glcm_energy    1.2257  0.1968   0.8417   1.6082 1.0018      1.0057 1462
+   pituitary_tumor : homogeneity    1.0673  0.2442   0.5853   1.5511 1.0007      1.0018 1644
+  pituitary_tumor : aspect_ratio   -0.3908  0.0995  -0.5880  -0.1969 1.0014      1.0036 1557
+     pituitary_tumor : perimeter    1.7134  0.1293   1.4634   1.9696 1.0006      1.0013 1648
+
+
+----------------------------------------------------------------------
+Model B (Normal(0, 2)) 
+----------------------------------------------------------------------
+
+Acceptance rates:  0.24, 0.227, 0.233, 0.237 
+Max R-hat:         1.006 
+Min ESS:           1503 
+Median ESS:        1605 
+Params w/ R-hat > 1.1: 0 / 33 
+Params w/ ESS < 400:   0 / 33 
+
+Posterior summary (all parameters):
+                       parameter post_mean post_sd ci_lower ci_upper  r_hat r_hat_upper  ess
+      glioma_tumor : (Intercept)    0.4501  0.1267   0.1979   0.6951 1.0018      1.0054 1594
+         glioma_tumor : skewness    4.7444  0.3530   4.0669   5.4375 1.0012      1.0027 1838
+         glioma_tumor : kurtosis   -5.2150  0.3057  -5.8150  -4.6161 1.0013      1.0029 1860
+           glioma_tumor : energy   -0.4232  0.1229  -0.6702  -0.1904 1.0022      1.0067 1626
+          glioma_tumor : entropy   -0.1412  0.1774  -0.4890   0.2071 1.0017      1.0051 1580
+         glioma_tumor : contrast   -3.5682  0.2640  -4.0917  -3.0595 1.0016      1.0050 1738
+      glioma_tumor : correlation   -2.1686  0.1364  -2.4337  -1.9005 1.0022      1.0058 1745
+      glioma_tumor : glcm_energy    0.5779  0.2334   0.1249   1.0416 1.0015      1.0034 1589
+      glioma_tumor : homogeneity    0.3485  0.2210  -0.0861   0.7836 1.0009      1.0020 1672
+     glioma_tumor : aspect_ratio   -0.0827  0.0861  -0.2473   0.0875 1.0045      1.0141 1504
+        glioma_tumor : perimeter   -0.5779  0.1256  -0.8216  -0.3282 1.0002      1.0003 1660
+  meningioma_tumor : (Intercept)    1.1967  0.0954   1.0115   1.3882 1.0017      1.0051 1552
+     meningioma_tumor : skewness    0.5499  0.1513   0.2577   0.8474 1.0021      1.0059 1605
+     meningioma_tumor : kurtosis   -1.5045  0.1904  -1.8749  -1.1230 1.0022      1.0059 1736
+       meningioma_tumor : energy   -1.0003  0.1069  -1.2122  -0.7921 1.0027      1.0078 1571
+      meningioma_tumor : entropy    0.6218  0.1188   0.3899   0.8557 1.0060      1.0176 1585
+     meningioma_tumor : contrast   -0.5682  0.1164  -0.8004  -0.3416 1.0037      1.0115 1694
+  meningioma_tumor : correlation   -0.1452  0.1090  -0.3606   0.0666 1.0014      1.0032 1616
+  meningioma_tumor : glcm_energy   -0.0944  0.1449  -0.3844   0.1878 1.0020      1.0054 1533
+  meningioma_tumor : homogeneity    1.9674  0.1766   1.6281   2.3182 1.0006      1.0014 1504
+ meningioma_tumor : aspect_ratio   -0.1322  0.0757  -0.2797   0.0154 1.0027      1.0082 1552
+    meningioma_tumor : perimeter    0.2241  0.1047   0.0205   0.4290 1.0003      1.0007 1503
+   pituitary_tumor : (Intercept)    0.5206  0.1100   0.3071   0.7392 1.0021      1.0062 1612
+      pituitary_tumor : skewness    2.5597  0.2726   2.0399   3.1042 1.0009      1.0028 1663
+      pituitary_tumor : kurtosis   -4.3888  0.2692  -4.9195  -3.8683 1.0001      1.0001 1682
+        pituitary_tumor : energy    0.1695  0.1226  -0.0669   0.4125 1.0022      1.0058 1637
+       pituitary_tumor : entropy   -0.1389  0.1570  -0.4411   0.1686 1.0054      1.0157 1531
+      pituitary_tumor : contrast   -1.7939  0.2279  -2.2519  -1.3535 1.0021      1.0064 1595
+   pituitary_tumor : correlation   -1.8542  0.1324  -2.1094  -1.5879 1.0001      1.0005 1717
+   pituitary_tumor : glcm_energy    1.0935  0.1865   0.7302   1.4570 1.0019      1.0059 1525
+   pituitary_tumor : homogeneity    1.1065  0.2389   0.6401   1.5805 1.0006      1.0020 1599
+  pituitary_tumor : aspect_ratio   -0.3635  0.0969  -0.5531  -0.1744 1.0043      1.0134 1618
+     pituitary_tumor : perimeter    1.6963  0.1284   1.4441   1.9433 1.0005      1.0013 1503
+
+
+
+> cat(rep("-", 70), sep = ""); cat("\n")
+----------------------------------------------------------------------
+
+> cat("PRIOR IMPACT: MLE vs Model A vs Model B\n")
+PRIOR IMPACT: MLE vs Model A vs Model B
+
+> cat(rep("-", 70), sep = ""); cat("\n")
+----------------------------------------------------------------------
+
+> print(compare_df, row.names = FALSE)
+                       parameter    mle  post_A  post_B shrinkage_A shrinkage_B
+      glioma_tumor : (Intercept)  0.437  0.4353  0.4501      -0.001       0.014
+         glioma_tumor : skewness  5.143  5.1837  4.7444       0.041      -0.398
+         glioma_tumor : kurtosis -5.595 -5.6424 -5.2150      -0.047       0.380
+           glioma_tumor : energy -0.409 -0.4183 -0.4232      -0.009      -0.014
+          glioma_tumor : entropy -0.113 -0.1156 -0.1412      -0.002      -0.028
+         glioma_tumor : contrast -3.777 -3.8150 -3.5682      -0.038       0.209
+      glioma_tumor : correlation -2.299 -2.3121 -2.1686      -0.014       0.130
+      glioma_tumor : glcm_energy  0.652  0.6553  0.5779       0.003      -0.074
+      glioma_tumor : homogeneity  0.263  0.2720  0.3485       0.009       0.085
+     glioma_tumor : aspect_ratio -0.103 -0.1046 -0.0827      -0.002       0.020
+        glioma_tumor : perimeter -0.592 -0.5948 -0.5779      -0.002       0.015
+  meningioma_tumor : (Intercept)  1.238  1.2472  1.1967       0.010      -0.041
+     meningioma_tumor : skewness  0.642  0.6529  0.5499       0.011      -0.092
+     meningioma_tumor : kurtosis -1.632 -1.6545 -1.5045      -0.022       0.128
+       meningioma_tumor : energy -1.005 -1.0117 -1.0003      -0.007       0.004
+      meningioma_tumor : entropy  0.640  0.6480  0.6218       0.008      -0.018
+     meningioma_tumor : contrast -0.604 -0.6140 -0.5682      -0.010       0.036
+  meningioma_tumor : correlation -0.212 -0.2148 -0.1452      -0.003       0.067
+  meningioma_tumor : glcm_energy -0.027 -0.0294 -0.0944      -0.003      -0.068
+  meningioma_tumor : homogeneity  1.961  1.9791  1.9674       0.018       0.006
+ meningioma_tumor : aspect_ratio -0.149 -0.1517 -0.1322      -0.003       0.017
+    meningioma_tumor : perimeter  0.232  0.2320  0.2241       0.000      -0.007
+   pituitary_tumor : (Intercept)  0.555  0.5543  0.5206      -0.001      -0.034
+      pituitary_tumor : skewness  2.765  2.8111  2.5597       0.046      -0.206
+      pituitary_tumor : kurtosis -4.622 -4.6776 -4.3888      -0.056       0.233
+        pituitary_tumor : energy  0.162  0.1628  0.1695       0.001       0.008
+       pituitary_tumor : entropy -0.087 -0.0881 -0.1389      -0.001      -0.052
+      pituitary_tumor : contrast -1.900 -1.9270 -1.7939      -0.027       0.106
+   pituitary_tumor : correlation -1.951 -1.9638 -1.8542      -0.013       0.097
+   pituitary_tumor : glcm_energy  1.225  1.2257  1.0935       0.001      -0.131
+   pituitary_tumor : homogeneity  1.061  1.0673  1.1065       0.006       0.045
+  pituitary_tumor : aspect_ratio -0.386 -0.3908 -0.3635      -0.004       0.023
+     pituitary_tumor : perimeter  1.700  1.7134  1.6963       0.013      -0.004
+
+> sink()

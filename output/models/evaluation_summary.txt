@@ -1,0 +1,83 @@
+
+> cat("TEST SET EVALUATION — STAT 5353 FINAL PROJECT\n")
+TEST SET EVALUATION — STAT 5353 FINAL PROJECT
+
+> cat(rep("=", 70), sep = ""); cat("\n\n")
+======================================================================
+
+
+> print_report("FREQUENTIST MLE (baseline)", metrics_F)
+
+--- FREQUENTIST MLE (baseline) ---
+Confusion matrix:
+                  Predicted
+Actual             no_tumor glioma_tumor meningioma_tumor pituitary_tumor
+  no_tumor               38           12               51               4
+  glioma_tumor           24           16               42              18
+  meningioma_tumor       28            6               64              17
+  pituitary_tumor        14            4               11              45
+
+Accuracy: 41.37% (163 / 394)
+Per-class metrics:
+             class precision recall    f1 support
+1         no_tumor     0.365  0.362 0.364     105
+2     glioma_tumor     0.421  0.160 0.232     100
+3 meningioma_tumor     0.381  0.557 0.452     115
+4  pituitary_tumor     0.536  0.608 0.570      74
+Macro F1: 0.404
+
+> print_report("BAYESIAN Model A (Normal(0, 10) prior)", metrics_A, pred_A)
+
+--- BAYESIAN Model A (Normal(0, 10) prior) ---
+Confusion matrix:
+                  Predicted
+Actual             no_tumor glioma_tumor meningioma_tumor pituitary_tumor
+  no_tumor               38           12               51               4
+  glioma_tumor           24           16               42              18
+  meningioma_tumor       28            6               64              17
+  pituitary_tumor        14            4               11              45
+
+Accuracy: 41.37% (163 / 394)
+Per-class metrics:
+             class precision recall    f1 support
+1         no_tumor     0.365  0.362 0.364     105
+2     glioma_tumor     0.421  0.160 0.232     100
+3 meningioma_tumor     0.381  0.557 0.452     115
+4  pituitary_tumor     0.536  0.608 0.570      74
+Macro F1: 0.404
+Mean predictive entropy: 1.077  (max 2.0 = maximal uncertainty)
+Mean posterior SD of predicted probs: 0.029
+
+> print_report("BAYESIAN Model B (Normal(0, 2) prior)",  metrics_B, pred_B)
+
+--- BAYESIAN Model B (Normal(0, 2) prior) ---
+Confusion matrix:
+                  Predicted
+Actual             no_tumor glioma_tumor meningioma_tumor pituitary_tumor
+  no_tumor               38           12               51               4
+  glioma_tumor           23           18               40              19
+  meningioma_tumor       27            6               64              18
+  pituitary_tumor        14            4               11              45
+
+Accuracy: 41.88% (165 / 394)
+Per-class metrics:
+             class precision recall    f1 support
+1         no_tumor     0.373  0.362 0.367     105
+2     glioma_tumor     0.450  0.180 0.257     100
+3 meningioma_tumor     0.386  0.557 0.456     115
+4  pituitary_tumor     0.523  0.608 0.562      74
+Macro F1: 0.411
+Mean predictive entropy: 1.092  (max 2.0 = maximal uncertainty)
+Mean posterior SD of predicted probs: 0.029
+
+> cat("\n============ MODEL COMPARISON ============\n")
+
+============ MODEL COMPARISON ============
+
+> print(comp, row.names = FALSE)
+                Model Accuracy Macro_F1 Glioma_F1 NoTumor_F1
+ Frequentist MLE (v2)   41.37%    0.404     0.232      0.364
+ Bayesian A (N(0,10))   41.37%    0.404     0.232      0.364
+  Bayesian B (N(0,2))   41.88%    0.411     0.257      0.367
+
+> sink()
